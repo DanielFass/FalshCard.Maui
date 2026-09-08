@@ -1,0 +1,18 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FlashCard.Maui.Views.StudyPage" Title="Study">
+    <Grid Padding="24" RowDefinitions="Auto,*,Auto,Auto">
+        <Label Text="{Binding CardsRemaining, StringFormat='{0} cards left'}" HorizontalOptions="Center" TextColor="White" />
+        <VerticalStackLayout Grid.Row="1" Spacing="20" VerticalOptions="Center">
+            <Label Text="{Binding CurrentCard.Front}" FontSize="36" HorizontalTextAlignment="Center" TextColor="White" />
+            <Label x:Name="BackLabel" Text="{Binding CurrentCard.Back}" FontSize="28" HorizontalTextAlignment="Center" TextColor="White" IsVisible="{Binding IsBackShown}" />
+        </VerticalStackLayout>
+        <Button x:Name="ShowButton" Grid.Row="2" Text="Show" Command="{Binding ShowCommand}" />
+        <HorizontalStackLayout x:Name="AnswerButtons" Grid.Row="2" Spacing="12" HorizontalOptions="Center" IsVisible="False">
+            <Button Text="Again" Command="{Binding AgainCommand}" BackgroundColor="#E76F51" TextColor="White" CornerRadius="12" />
+            <Button Text="Done" Command="{Binding DoneCommand}" BackgroundColor="#2A9D8F" TextColor="White" CornerRadius="12" />
+        </HorizontalStackLayout>
+        <VerticalStackLayout x:Name="FinishedSection" Grid.Row="3" IsVisible="False" Spacing="10">
+            <Label Text="Deck is finished!" FontSize="24" HorizontalOptions="Center" TextColor="White" />
+            <Button Text="Close" Command="{Binding CloseCommand}" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
